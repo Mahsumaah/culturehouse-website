@@ -1,0 +1,20 @@
+// Colors
+:root {
+  --color-primary: #AFA75B;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-grey-light: rgba(255, 255, 255, 0.43);
+  --color-grey-dark: rgba(0, 0, 0, 0.25);
+  --color-text-muted: rgba(0, 0, 0, 0.44);
+}
+
+// Background utility classes
+.bg-white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.bg-black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}

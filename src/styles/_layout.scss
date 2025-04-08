@@ -1,0 +1,118 @@
+// Layout
+.section {
+  padding: 90px 32px;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    max-width: 800px;
+  }
+}
+
+// Spacing utilities
+.mt-80 {
+  margin-top: 80px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+// Breakpoint system
+// =================
+
+// Breakpoint variables
+$breakpoints: (
+        'xs': 0,
+        'sm': 576px,
+        'md': 768px,
+        'lg': 992px,
+        'xl': 1200px,
+        'xxl': 1400px
+);
+
+// Mixin for min-width breakpoints (mobile-first approach)
+@mixin breakpoint-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Mixin for max-width breakpoints (desktop-first approach)
+@mixin breakpoint-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: ($breakpoint-value - 0.02)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Mixin for breakpoint range (between two breakpoints)
+@mixin breakpoint-between($lower, $upper) {
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    $lower-value: map-get($breakpoints, $lower);
+    $upper-value: map-get($breakpoints, $upper);
+
+    @media (min-width: $lower-value) and (max-width: ($upper-value - 0.02)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoints: #{$lower} or #{$upper}.';
+  }
+}
+
+// Mixin for custom breakpoints
+@mixin breakpoint-custom($min, $max: null) {
+  @if $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+}
+
+// Usage examples:
+// ==============
+
+/*
+.element {
+  // Mobile styles (default)
+  font-size: 16px;
+
+  // Tablet and up
+  @include breakpoint-up(md) {
+    font-size: 18px;
+  }
+
+  // Desktop and up
+  @include breakpoint-up(lg) {
+    font-size: 20px;
+  }
+
+  // Only on mobile
+  @include breakpoint-down(sm) {
+    padding: 10px;
+  }
+
+  // Only on tablets
+  @include breakpoint-between(md, lg) {
+    padding: 20px;
+  }
+}
+*/

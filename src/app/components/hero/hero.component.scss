@@ -1,0 +1,306 @@
+@import 'main-styles';
+
+
+section.hero {
+  height: 100vh;
+}
+
+.nav {
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: none;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    @include breakpoint-up(lg) {
+      padding: 40px 110px;
+    }
+  }
+
+  &__logo {
+    height: 131px;
+    opacity: 1;
+    &.hidden {
+      opacity: 0;
+    }
+    img {
+      width: 93px;
+      height: 131px;
+      object-fit: contain;
+    }
+  }
+
+  // Desktop menu styles (new)
+  &__desktop-menu {
+    display: none; // Hidden by default (mobile first)
+
+    @include breakpoint-up(lg) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__menu-items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+  }
+
+  &__menu-link {
+    color: #FFF;
+    text-align: center;
+    font-family: "Bliss Pro", serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 134.2%; /* 34.892px */
+    letter-spacing: 0.52px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__lang-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    cursor: pointer;
+
+    img {
+      margin-right: 8px;
+    }
+
+    .nav__lang-label {
+      color: #FFF;
+      font-family: "Bliss Pro", serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+  }
+}
+
+// Burger menu (only visible on mobile)
+.burger-menu {
+  width: 32px;
+  height: 22.5px;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+
+  @include breakpoint-up(lg) {
+    display: none; // Hide on desktop
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  &--open {
+    .burger-menu__line {
+      &:nth-child(1) {
+        transform: translateY(9.75px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-9.75px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// Fullscreen menu (only for mobile)
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  @include breakpoint-up(lg) {
+    display: none !important; // Force hide on desktop even when class is toggled
+  }
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__item {
+    display: block;
+    color: #AFA75B;
+    font-family: "Bliss Pro", serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 153%;
+    text-decoration: none;
+    padding: 16px 0;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.43);
+    margin: 0;
+    border: none;
+  }
+
+  &__lang-switcher {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    div {
+      color: #FFF;
+      font-family: "Bliss Pro", serif;
+      margin-left: 8px;
+    }
+  }
+}
+
+// Restore scrolling when on desktop view (if menu was open on mobile)
+@include breakpoint-up(lg) {
+  body {
+    overflow: auto !important; // Override any inline style set by JS
+  }
+}
+
+// The rest of your existing hero styles
+.hero {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__content {
+    margin-top: auto;
+    margin-bottom: 80px;
+    padding: 0 32px;
+    margin-right: auto;
+    margin-left: 0;
+
+    @include breakpoint-up(lg) {
+      margin-bottom: 110px;
+      margin-right: 110px;
+      margin-left: auto; // This will align to the right
+      max-width: 720px;
+      padding-right:0;
+    }
+  }
+
+  &__title {
+    color: #FFF;
+    font-family: "Bliss Pro", serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+
+    // Desktop-only typography
+    @include breakpoint-up(lg) {
+      text-align: right;
+      font-size: 46px;
+      letter-spacing: 0.46px;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    margin-top: 30px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+    @include breakpoint-up(lg) {
+      padding-left: 43px;
+    }
+  }
+
+  &__video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    margin-left: 12px;
+  }
+}
+
+ .hero__content {
+  z-index: 3;
+}

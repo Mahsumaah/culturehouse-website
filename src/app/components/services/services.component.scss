@@ -1,0 +1,100 @@
+.services {
+  background-color: white;
+  color: black;
+  padding: 90px 32px;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: #AFA75B;
+    font-family: "Bliss Pro", serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 109%; /* 54.5px */
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  &__content {
+    max-width: 800px;
+  }
+
+  &__paragraph {
+    margin-bottom: 24px;
+    color: #000;
+    font-family: "Bliss Pro", serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    color: #000;
+    font-family: "Bliss Pro", serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 33.6px */
+    letter-spacing: 0.48px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    margin-top: 10px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__arrow {
+    margin-left: 12px;
+  }
+
+  /* Services Listing Styles */
+  &__listing {
+    margin-top: 80px;
+
+  }
+
+  &__item {
+    color: #000;
+    font-family: "Bliss Pro", serif;
+    font-size: 29px;
+    font-style: normal;
+    font-weight: 700;
+    //line-height: 349.5%; /* 101.355px */
+    letter-spacing: 0.29px;
+    padding: 32px 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__bullet {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 25px;
+
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+  }
+
+
+  &__divider {
+    height: 0;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    margin: 0;
+    padding: 0;
+  }
+}

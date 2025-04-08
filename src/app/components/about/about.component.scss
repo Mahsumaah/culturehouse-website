@@ -1,0 +1,45 @@
+@import "../../../styles/main-styles";
+
+.about {
+  @extend .bg-white;
+  height: auto;
+
+  @extend .section;
+  padding: 90px 32px;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  &__content {
+    max-width: 800px;
+  }
+
+  &__title {
+    color: #AFA75B;
+    font-family: "Bliss Pro", serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 109%; /* 54.5px */
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+
+  &__paragraph {
+    margin-bottom: 24px;
+
+    color: #000;
+    font-family: "Bliss Pro", serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

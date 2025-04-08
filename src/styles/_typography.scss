@@ -1,0 +1,45 @@
+// Typography
+:root {
+  --font-primary: "Bliss Pro", serif;
+
+  // Font sizes
+  --font-size-xs: 13px;
+  --font-size-sm: 23px;
+  --font-size-md: 29px;
+  --font-size-lg: 32px;
+  --font-size-xl: 35px;
+  --font-size-xxl: 50px;
+  --font-size-hero: 100px;
+
+  // Line heights
+  --line-height-tight: 109%;
+  --line-height-normal: 140%;
+  --line-height-loose: 153%;
+}
+
+// Typography classes
+.heading-primary {
+  font-family: var(--font-primary), serif;
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  letter-spacing: 0.5px;
+  color: #AFA75B;
+  margin: 0;
+}
+
+.paragraph-regular {
+  font-family: var(--font-primary), serif;
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: var(--line-height-normal);
+  letter-spacing: 0.32px;
+}
+
+.paragraph-small {
+  font-family: var(--font-primary), serif;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: var(--line-height-normal);
+  letter-spacing: 0.23px;
+}

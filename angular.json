@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "outputPath": "dist/ng-culture-house",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -102,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b90e9a95-2b98-43b9-aa4d-4908f1e1e289"
   }
 }

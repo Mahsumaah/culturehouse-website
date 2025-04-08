@@ -1,0 +1,45 @@
+// CTA button
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--font-primary), serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.48px;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__arrow {
+    margin-left: 12px;
+  }
+
+  &--light {
+    color: var(--color-white);
+  }
+
+  &--dark {
+    color: var(--color-black);
+  }
+}
+
+// Dividers
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  &--light {
+    background-color: var(--color-grey-light);
+  }
+
+  &--dark {
+    background-color: var(--color-grey-dark);
+  }
+}
