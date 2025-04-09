@@ -4,7 +4,7 @@
     @for (project of recentWork; track project.id) {
       <div class="recent-work__project">
         <div class="recent-work__image-wrapper">
-          <img class="recent-work__image" [src]="project.imgSrc" [alt]="project.title">
+          <img class="recent-work__image" [src]="project.carouselImages[0].imgSrc" [alt]="project.title">
         </div>
         <h3 class="recent-work__project-title">{{ project.title }}</h3>
       </div>

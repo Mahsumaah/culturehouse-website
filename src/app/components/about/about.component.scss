@@ -1,18 +1,27 @@
-@import "../../../styles/main-styles";
+@import "main-styles";
+//@import "color";
 
 .about {
-  @extend .bg-white;
+  //@extend .bg-white;
+  background-color: white;
+  color: var(--color-black);
   height: auto;
 
   @extend .section;
   padding: 90px 32px;
-
+  @include breakpoint-up(lg) {
+    padding: 150px 32px;
+  }
   &__container {
     max-width: 1400px;
     margin: 0 auto;
   }
   &__content {
     max-width: 800px;
+    @include breakpoint-up(lg) {
+      max-width: 100%;
+      margin-left:100px
+    }
   }
 
   &__title {
@@ -24,6 +33,9 @@
     line-height: 109%; /* 54.5px */
     letter-spacing: 0.5px;
     margin: 0;
+    @include breakpoint-up(lg) {
+      font-size: 80px;
+    }
   }
 
 
@@ -40,6 +52,9 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+    @include breakpoint-up(lg) {
+      font-size: 46px;
     }
   }
 }

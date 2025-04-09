@@ -1,3 +1,5 @@
+@import "main-styles";
+
 .recent-work {
   background-color: black;
   padding: 75px 0;
@@ -17,11 +19,32 @@
     font-style: normal;
     font-weight: 700;
     line-height: 109%; /* 109px */
+    @include breakpoint-up(lg) {
+      font-size: 270px;
+    }
   }
 
   &__projects {
     display: flex;
     flex-direction: column;
+
+    // Desktop grid layout
+    @include breakpoint-up(md) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      margin: 0 110px; // Add the 110px margin on both sides
+      padding: 40px 0; // Add some ver
+
+    }
+    @include breakpoint-up(xl) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      margin: 0 110px; // Add the 110px margin on both sides
+      padding: 40px 0; // Add some vertical padding
+    }
+
   }
 
   &__project {
@@ -31,11 +54,22 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    // Reset spacing for desktop grid
+    @include breakpoint-up(lg) {
+      padding: 0;
+      margin-bottom: 0;
+    }
   }
 
   &__image-wrapper {
     width: 100%;
     overflow: hidden;
+    @include breakpoint-up(lg) {
+      //height: 0;
+      //padding-bottom: 75%; // Create a 4:3 aspect ratio for images
+      position: relative;
+    }
   }
 
   &__image {
@@ -43,6 +77,17 @@
     height: auto;
     display: block;
     margin: 0;
+    min-width: 200px;
+
+    @include breakpoint-up(lg) {
+    min-width: 200px;
+      //position: absolute;
+      //top: 0;
+      //left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Maintain aspect ratio while covering container
+    }
   }
 
   &__project-title {
@@ -55,5 +100,10 @@
     letter-spacing: 0.48px;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    @include breakpoint-up(lg) {
+      font-size: 26px;
+      margin: 20px 0 0 0;
+    }
   }
 }
