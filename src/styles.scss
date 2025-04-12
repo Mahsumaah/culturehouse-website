@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+@import "main-styles";
 
 body {
   background-color: #000000;
   color: #ffffff;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+
 }
+

@@ -1,12 +1,12 @@
 <section class="recent-work" #recentWorkSection>
-  <h2 class="recent-work__title">Recent work Recent work Recent work</h2>
+  <h2 class="recent-work__title">{{'RECENT_WORK.TITLE' | translate}} {{'RECENT_WORK.TITLE' | translate}} {{'RECENT_WORK.TITLE' | translate}}</h2>
   <div class="recent-work__projects">
     @for (project of recentWork; track project.id) {
       <div class="recent-work__project">
         <div class="recent-work__image-wrapper">
           <img class="recent-work__image" [src]="project.carouselImages[0].imgSrc" [alt]="project.title">
         </div>
-        <h3 class="recent-work__project-title">{{ project.title }}</h3>
+        <h3 class="recent-work__project-title">{{ project.title[language()] }}</h3>
       </div>
     }
   </div>

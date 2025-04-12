@@ -5,18 +5,22 @@
         <img src="assets/culture-house-logo.svg" alt="Culture House Logo" width="93" height="131">
       </div>
 
-      <!-- Desktop horizontal menu - new addition -->
+      <!-- Desktop horizontal menu -->
       <div class="nav__desktop-menu">
         <ul class="nav__menu-items">
-          <li><a href="#" class="nav__menu-link">Home</a></li>
-          <li><a href="#about" class="nav__menu-link">About</a></li>
-          <li><a href="#work" class="nav__menu-link">Recent Work</a></li>
-          <li><a href="#services" class="nav__menu-link">Services</a></li>
-          <li><a href="#help" class="nav__menu-link">How we can help</a></li>
-          <li><a href="#contact" class="nav__menu-link">Contact</a></li>
+          @for (item of menuItems; track item.id) {
+            <li><a [href]="item.url" class="nav__menu-link">{{ item.label | translate }}</a></li>
+          }
         </ul>
         <div class="nav__lang-switcher">
-          <div class="nav__lang-label">EN</div>
+          @for (lang of availableLanguages; track lang.code) {
+            <div
+              class="nav__lang-label"
+              [class.active]="currentLang === lang.code"
+              (click)="switchLanguage(lang.code)">
+              {{ lang.code | uppercase }}
+            </div>
+          }
           <img src="assets/lang-switch.svg" alt="Culture House Language switch" width="16" height="17">
         </div>
       </div>
@@ -32,33 +36,31 @@
 
   <div class="fullscreen-menu" [class.fullscreen-menu--open]="isMenuOpen">
     <nav class="fullscreen-menu__nav">
-      <a href="#" class="fullscreen-menu__item" (click)="closeMenu()">Home</a>
-      <hr class="fullscreen-menu__divider">
+      @for (item of menuItems; track item.id) {
+        <a [href]="item.url" class="fullscreen-menu__item" (click)="closeMenu()">{{ item.label | translate }}</a>
+        <hr class="fullscreen-menu__divider">
+      }
 
-      <a href="#about" class="fullscreen-menu__item" (click)="closeMenu()">About</a>
-      <hr class="fullscreen-menu__divider">
-
-      <a href="#work" class="fullscreen-menu__item" (click)="closeMenu()">Recent Work</a>
-      <hr class="fullscreen-menu__divider">
-
-      <a href="#services" class="fullscreen-menu__item" (click)="closeMenu()">Services</a>
-      <hr class="fullscreen-menu__divider">
-
-      <a href="#help" class="fullscreen-menu__item" (click)="closeMenu()">How we can help</a>
-      <hr class="fullscreen-menu__divider">
-
-      <a href="#contact" class="fullscreen-menu__item" (click)="closeMenu()">Contact</a>
       <div class="fullscreen-menu__lang-switcher">
         <img src="assets/lang-switch.svg" alt="Culture House Language switch" width="27" height="30">
-        <div class="">EN</div>
+        <div class="lang-selector">
+          @for (lang of availableLanguages; track lang.code) {
+            <span
+              class="lang-option"
+              [class.active]="currentLang === lang.code"
+              (click)="switchLanguage(lang.code)">
+              {{ lang.nativeName }}
+            </span>
+          }
+        </div>
       </div>
     </nav>
   </div>
 
   <div class="hero__content">
-    <h1 class="hero__title">A home for cultural story gathering and curated narrative amplification.</h1>
+    <h1 class="hero__title">{{ 'HERO.TITLE' | translate }}</h1>
     <a href="#connect" class="hero__cta">
-      Let's connect
+      {{ 'HERO.CONNECT' | translate }}
       <svg class="hero__arrow" width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 12H22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M15 5L22 12L15 19" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

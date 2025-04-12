@@ -1,8 +1,13 @@
+@import "main-styles";
 .support {
   background-color: black;
   color: white;
   height: auto;
   padding: 90px 32px;
+  @include breakpoint-up(lg) {
+    padding: 90px 110px;
+
+  }
 
   &__container {
     max-width: 1400px;
@@ -11,23 +16,41 @@
 
   &__title {
     color: #AFA75B;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
     line-height: 109%; /* 54.5px */
     letter-spacing: 0.5px;
     margin: 0 0 30px 0;
+
+    @include breakpoint-up(lg) {
+      font-size: 80px;
+    }
   }
 
   &__content {
     max-width: 800px;
+
+    @include breakpoint-up(lg) {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-left: 20%;
+    }
   }
+
+  &__column {
+    @include breakpoint-up(lg) {
+      width: calc(50% - 20px); // 50% minus half the gap
+    }
+  }
+
 
   &__paragraph {
     margin-bottom: 24px;
     color: #FFF;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 23px;
     font-style: normal;
     font-weight: 400;
@@ -36,6 +59,10 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+    @include breakpoint-up(lg) {
+      font-size: 24px;
+
     }
   }
 

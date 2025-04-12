@@ -3,6 +3,10 @@
 
 section.hero {
   height: 100vh;
+  padding: 0 40px;
+  @include breakpoint-up(lg) {
+    padding: 0 110px;
+  }
 }
 
 .nav {
@@ -16,17 +20,22 @@ section.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
-    max-width: 1400px;
+    padding: 40px 0;
+    //max-width: 1400px;
     margin: 0 auto;
-    @include breakpoint-up(lg) {
-      padding: 40px 110px;
-    }
+    //@include breakpoint-up(lg) {
+    //  padding: 40px 110px;
+    //}
   }
 
   &__logo {
     height: 131px;
     opacity: 1;
+    margin-right: 30px;
+    :host-context([dir="rtl"]) & {
+      margin-left: 30px;
+    }
+
     &.hidden {
       opacity: 0;
     }
@@ -58,7 +67,7 @@ section.hero {
   &__menu-link {
     color: #FFF;
     text-align: center;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 26px;
     font-style: normal;
     font-weight: 700;
@@ -84,10 +93,14 @@ section.hero {
 
     .nav__lang-label {
       color: #FFF;
-      font-family: "Bliss Pro", serif;
+      font-family: inherit;
       font-size: 26px;
       font-weight: 700;
       margin-right: 10px;
+      cursor: pointer;
+      &.active {
+        color: #AFA75B;
+      }
     }
   }
 }
@@ -172,7 +185,7 @@ section.hero {
   &__item {
     display: block;
     color: #AFA75B;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -201,7 +214,7 @@ section.hero {
 
     div {
       color: #FFF;
-      font-family: "Bliss Pro", serif;
+      font-family: inherit;
       margin-left: 8px;
     }
   }
@@ -221,16 +234,12 @@ section.hero {
   overflow: hidden;
 
   &__content {
-    margin-top: auto;
-    margin-bottom: 80px;
-    padding: 0 32px;
-    margin-right: auto;
-    margin-left: 0;
+    padding: 0;
+    margin: auto 0 80px 0;
 
     @include breakpoint-up(lg) {
-      margin-bottom: 110px;
-      margin-right: 110px;
-      margin-left: auto; // This will align to the right
+      margin: auto 0 110px auto;
+      //margin-left: auto; // This will align to the right
       max-width: 720px;
       padding-right:0;
     }
@@ -238,7 +247,7 @@ section.hero {
 
   &__title {
     color: #FFF;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;

@@ -1,3 +1,5 @@
+@import 'main-styles';
+
 .services {
   background-color: white;
   color: black;
@@ -10,23 +12,31 @@
 
   &__title {
     color: #AFA75B;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
     line-height: 109%; /* 54.5px */
     letter-spacing: 0.5px;
     margin: 0;
+
+    @include breakpoint-up(lg) {
+      font-size: 80px;
+    }
   }
 
   &__content {
     max-width: 800px;
+    @include breakpoint-up(lg) {
+      margin-left: 100px;
+      max-width: 1283px;
+    }
   }
 
   &__paragraph {
     margin-bottom: 24px;
     color: #000;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;
@@ -38,7 +48,7 @@
     display: inline-flex;
     align-items: center;
     color: #000;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -61,11 +71,21 @@
   &__listing {
     margin-top: 80px;
 
+    @include breakpoint-up(lg) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__column {
+    @include breakpoint-up(lg) {
+      width: calc(50% - 35px); // 50% minus half of the gap
+    }
   }
 
   &__item {
     color: #000;
-    font-family: "Bliss Pro", serif;
+    font-family: inherit;
     font-size: 29px;
     font-style: normal;
     font-weight: 700;
@@ -88,7 +108,6 @@
       object-fit: contain;
     }
   }
-
 
   &__divider {
     height: 0;

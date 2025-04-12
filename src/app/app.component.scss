@@ -1,5 +1,9 @@
 :host {
   display: block;
+  font-family: "Bliss Pro", sans-serif;
+  :host-context([dir="rtl"]) & {
+    font-family: "Noto Sans Arabic", sans-serif;
+  }
 }
 
 @font-face {

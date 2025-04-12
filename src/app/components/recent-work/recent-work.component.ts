@@ -1,9 +1,49 @@
-import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  PLATFORM_ID,
+  HostListener,
+  ViewChild,
+  Inject,
+  inject
+} from '@angular/core';
+import {AsyncPipe, isPlatformBrowser, NgIf} from '@angular/common';
+import {LanguageService} from "../../services/language.service";
+import {TranslatePipe} from "@ngx-translate/core";
+import {toSignal} from "@angular/core/rxjs-interop";
+
+// Define the structure for multilingual text
+export interface MultilingualText {
+  en: string;
+  ar: string;
+  [key: string]: string; // Allow for additional languages
+}
+
+// Define the structure for carousel images
+export interface CarouselImage {
+  id: number;
+  imgSrc: string;
+}
+
+// Define the structure for a recent work project
+export interface RecentWorkItem {
+  id: number;
+  title: MultilingualText;
+  activeImageId: number;
+  imgSrc: string;
+  carouselImages: CarouselImage[];
+}
+
+// Type for the entire recentWork array
+export type RecentWork = RecentWorkItem[];
 
 @Component({
   selector: 'app-recent-work',
   standalone: true,
-  imports: [],
+  imports: [
+    TranslatePipe,
+  ],
   templateUrl: './recent-work.component.html',
   styleUrl: './recent-work.component.scss'
 })
@@ -12,11 +52,23 @@ export class RecentWorkComponent implements AfterViewInit{
   private lastScrollTop = 0;
   private sectionVisible = false;
   private observer!: IntersectionObserver;
+  private isBrowser: boolean;
+  private languageService = inject(LanguageService);
 
-  recentWork = [
+  language = toSignal(this.languageService.language$, { initialValue: 'en' });
+
+
+
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    // Check if we're in the browser
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+  recentWork: RecentWork = [
     {
       id: 2,
-      title: 'Shop Beirut',
+      title: {
+        en: 'Shop Beirut', ar: 'تسوق بيروت'
+      },
       activeImageId: 1, // Track active image
       imgSrc: 'assets/work/shop-beirut-culture-house/main-shop-beirut-culture-house.jpg',
       carouselImages: [
@@ -36,12 +88,13 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 3,
-      title: 'Intercontinental Hotels',
-      activeImageId: 1, imgSrc: 'assets/work/intercontinental-hotels-culture-house/main-intercontinental-hotels-culture-house.jpg',
+      title: {en: 'Intercontinental Hotels', ar: 'فنادق إنتركونتيننتال' },
+      activeImageId: 1,
+      imgSrc: 'assets/work/intercontinental-hotels-culture-house/main-intercontinental-hotels-culture-house.jpg',
       carouselImages: [
         {
           id: 1,
-          activeImageId: 1, imgSrc: 'assets/work/intercontinental-hotels-culture-house/main-intercontinental-hotels-culture-house.jpg'
+          imgSrc: 'assets/work/intercontinental-hotels-culture-house/main-intercontinental-hotels-culture-house.jpg'
         },
         {
           id: 2,
@@ -55,7 +108,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 4,
-      title: 'Ghana Edition',
+      title: { en: 'Ghana Edition', ar: 'إصدار غانا' },
       activeImageId: 1, imgSrc: 'assets/work/ghana-edition-culture-house/main-ghana-edition-culture-house.jpg',
       carouselImages: [
         {
@@ -74,7 +127,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 5,
-      title: 'The Hidden Kaleidoscope',
+      title: { en: 'The Hidden Kaleidoscope', ar: 'معرض أزياء التراث السعودي (ألوان سرمدية)' },
       activeImageId: 1, imgSrc: 'assets/work/the-hidden-kaleidoscope-culture-house/main-the-hidden-kaleidoscope-culture-house.jpg',
       carouselImages: [
         {
@@ -93,7 +146,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 6,
-      title: 'Turquoise Mountain Trust',
+      title: { en: 'Turquoise Mountain Trust', ar: 'هدايا كبار الشخصيات للجهات الحكومية السعودية' },
       activeImageId: 1, imgSrc: 'assets/work/turquoise-mountain-trust-culture-house/main-turquoise-mountain-trust-culture-house.jpg',
       carouselImages: [
         {
@@ -112,7 +165,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 7,
-      title: 'A Day At The Race',
+      title: { en : 'A Day At The Race', ar: 'قواعد اللباس لكأس السعودية' },
       activeImageId: 1, imgSrc: 'assets/work/a-day-at-the-race-culture-house/main-a-day-at-the-race-culture-house.jpg',
       carouselImages: [
         {
@@ -131,7 +184,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 8,
-      title: 'Tribe',
+      title: { en: 'Tribe', ar: 'ترايب' },
       activeImageId: 1, imgSrc: 'assets/work/tribe-culture-house/main-tribe-culture-house.jpg',
       carouselImages: [
         {
@@ -150,7 +203,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 9,
-      title: 'Fashion Futuress',
+      title: { en: 'Fashion Futuress', ar: 'مستقبل الأزياء'},
       activeImageId: 1, imgSrc: 'assets/work/fashion-futures-culture-house/main-fashion-futures-culture-house.jpg',
       carouselImages: [
         {
@@ -169,7 +222,7 @@ export class RecentWorkComponent implements AfterViewInit{
     },
     {
       id: 10,
-      title: 'Souq Waqif',
+      title: { en: 'Souq Waqif', ar: 'سوق واقف' },
       activeImageId: 1, imgSrc: 'assets/work/souq-waqif-culture-house/main-souq-waqif-culture-house.jpg',
       carouselImages: [
         {
@@ -189,8 +242,10 @@ export class RecentWorkComponent implements AfterViewInit{
   ];
 
   ngAfterViewInit() {
-    this.setupIntersectionObserver();
-    this.lastScrollTop = window.scrollY;
+    if (this.isBrowser) {
+      this.setupIntersectionObserver();
+      this.lastScrollTop = window.scrollY;
+    }
   }
 
   ngOnDestroy() {
@@ -216,7 +271,7 @@ export class RecentWorkComponent implements AfterViewInit{
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    if (!this.sectionVisible) return;
+    if (!this.isBrowser || !this.sectionVisible) return;
 
     const scrollTop = window.scrollY;
     console.log('Scroll Top:', scrollTop);
@@ -227,7 +282,8 @@ export class RecentWorkComponent implements AfterViewInit{
   }
 
   updateTitlePosition(scrollDirection: string = 'down') {
-    if (!this.recentWorkSection) return;
+
+    if (!this.isBrowser || !this.recentWorkSection) return;
 
     const section = this.recentWorkSection.nativeElement;
     const title = section.querySelector('.recent-work__title');
@@ -259,7 +315,13 @@ export class RecentWorkComponent implements AfterViewInit{
     const normalizedPosition = Math.max(0, Math.min(1, verticalPosition));
 
     // Calculate title position: start at -100% (left) and move to 0% (center)
-    const translateX =-51 + (-normalizedPosition * 100);
+    let translateX;
+    if(this.languageService.isRtl()) {
+      translateX =51 + (+normalizedPosition * 100);
+
+    } else {
+      translateX =-51 + (-normalizedPosition * 100);
+    }
 
     // Apply the translation
     title.style.transform = `translateX(${translateX}%)`;

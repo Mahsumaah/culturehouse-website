@@ -1,0 +1,60 @@
+{
+  "HERO": {
+    "TITLE": "A home for cultural storygathering and curated narrative amplification.",
+    "CONNECT": "Let's connect"
+  },
+  "ABOUT": {
+    "TITLE": "About",
+    "PARAGRAPH1": "We are experienced storytellers, adept at harnessing the power of cultural content to craft an authentic Saudi narrative.",
+    "PARAGRAPH2": "We have over a decade of experience telling stories both inside and outside of Saudi."
+  },
+  "RECENT_WORK": {
+    "TITLE": "Recent work",
+    "TITLE_REPEAT": "Recent work Recent work Recent work",
+    "PROJECT_2": "Shop Beirut",
+    "PROJECT_3": "Intercontinental Hotels",
+    "PROJECT_4": "Ghana Edition",
+    "PROJECT_5": "The Hidden Kaleidoscope",
+    "PROJECT_6": "Turquoise Mountain Trust",
+    "PROJECT_7": "A Day At The Race",
+    "PROJECT_8": "Tribe",
+    "PROJECT_9": "Fashion Futures",
+    "PROJECT_10": "Souq Waqif"
+  },
+  "SERVICES": {
+    "TITLE": "Our Services",
+    "DESCRIPTION": "Culture House designs compelling brand experiences by blending creativity, strategy, and technology to foster genuine connections and fuel business success. Discover our capabilities.",
+    "CONNECT": "Let's connect",
+    "ITEMS": {
+      "UX_DESIGN": "User journey design",
+      "SOCIAL_MEDIA": "Social media",
+      "BROCHURES": "Brochures",
+      "TV_SHOWS": "Produce TV shows concepts",
+      "CONTENT": "Content creation",
+      "GIFTS": "Gifts",
+      "MAGAZINES": "Publish magazines",
+      "BOOKS": "Printed books",
+      "EXHIBITIONS": "Exhibitions"
+    }
+  },
+  "SUPPORT": {
+    "TITLE": "How can Culture House support you?",
+    "PARAGRAPH1": "Let's unearth the stories that amplify Saudi Arabia's culture and focus on its heritage. Let's use storytelling to build a sense of pride and showcase passion.",
+    "PARAGRAPH2": "Let's craft narratives that spotlight all that is special about Saudi Arabia, and unlock the emotions shared by residents and visitors, as Saudi forges a path towards Vision 2030.",
+    "PARAGRAPH3": "Let's gather and deconstruct the narratives of Saudi Arabia's multiple historical stories, crafts, talents, heritage, arts, architecture, cuisine, people.",
+    "PARAGRAPH4": "Let's ensure that the experience of being in Saudi Arabia reflects being part of a vibrant society, thriving economy, ambitious nation. Let's turn the international investment focus to the opportunities of this thriving area.",
+    "PARAGRAPH5": "And let's amplify these stories as poems of pride for national and international consumption, as part of delivering on the mission of Saudi Arabia as a global tourism destination with its main anchors rooted in its historic culture and heritage."
+  },
+  "CONNECT": {
+    "TITLE": "Let's connect",
+    "COPYRIGHT": "Copyright © 2025 Culture House. All Rights Reserved."
+  },
+  "NAVIGATION": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "RECENT_WORK": "Recent Work",
+    "SERVICES": "Services",
+    "HELP": "How we can help",
+    "CONTACT": "Contact"
+  }
+}
