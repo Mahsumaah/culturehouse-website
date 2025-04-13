@@ -6,12 +6,13 @@ import {
   HostListener,
   ViewChild,
   Inject,
-  inject
+  inject, NgZone
 } from '@angular/core';
-import {AsyncPipe, isPlatformBrowser, NgIf} from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {LanguageService} from "../../services/language.service";
 import {TranslatePipe} from "@ngx-translate/core";
 import {toSignal} from "@angular/core/rxjs-interop";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 // Define the structure for multilingual text
 export interface MultilingualText {
@@ -45,7 +46,17 @@ export type RecentWork = RecentWorkItem[];
     TranslatePipe,
   ],
   templateUrl: './recent-work.component.html',
-  styleUrl: './recent-work.component.scss'
+  styleUrl: './recent-work.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', [
+        animate('0.8s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class RecentWorkComponent implements AfterViewInit{
   @ViewChild('recentWorkSection') recentWorkSection!: ElementRef;
@@ -54,7 +65,8 @@ export class RecentWorkComponent implements AfterViewInit{
   private observer!: IntersectionObserver;
   private isBrowser: boolean;
   private languageService = inject(LanguageService);
-
+  private ngZone = inject(NgZone);
+  private carouselIntervals: Map<number, any> = new Map();
   language = toSignal(this.languageService.language$, { initialValue: 'en' });
 
 
@@ -252,8 +264,61 @@ export class RecentWorkComponent implements AfterViewInit{
     if (this.observer) {
       this.observer.disconnect();
     }
+
+    // Clear all interval timers when component is destroyed
+    this.clearAllCarousels();
+  }
+  startCarousel(project: any): void {
+    if (!this.isBrowser) return;
+
+    // Clear any existing interval for this project
+    this.clearCarousel(project.id);
+
+    // Run outside Angular zone for better performance
+    this.ngZone.runOutsideAngular(() => {
+      const interval = setInterval(() => {
+        // Find the index of the current active image
+        const currentIndex = project.carouselImages.findIndex(
+          (img: any) => img.id === project.activeImageId
+        );
+
+        // Calculate next image index (loop back to first image if at the end)
+        const nextIndex = (currentIndex + 1) % project.carouselImages.length;
+
+        // Update the active image ID
+        this.ngZone.run(() => {
+          project.activeImageId = project.carouselImages[nextIndex].id;
+        });
+      }, 1100); // Change image every 2 seconds
+
+      // Store the interval ID for cleanup
+      this.carouselIntervals.set(project.id, interval);
+    });
   }
 
+  // Stop carousel when hover ends
+  stopCarousel(project: any): void {
+    this.clearCarousel(project.id);
+  }
+
+  // Helper method to clear a specific carousel interval
+  private clearCarousel(projectId: number): void {
+    if (this.carouselIntervals.has(projectId)) {
+      clearInterval(this.carouselIntervals.get(projectId));
+      this.carouselIntervals.delete(projectId);
+    }
+  }
+
+  // Helper method to clear all carousel intervals
+  private clearAllCarousels(): void {
+    this.carouselIntervals.forEach((interval) => clearInterval(interval));
+    this.carouselIntervals.clear();
+  }
+
+  // Check if an image is active
+  isActiveImage(project: any, imageId: number): boolean {
+    return project.activeImageId === imageId;
+  }
   setupIntersectionObserver() {
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

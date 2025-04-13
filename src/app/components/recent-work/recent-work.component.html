@@ -1,10 +1,20 @@
 <section class="recent-work" #recentWorkSection>
-  <h2 class="recent-work__title">{{'RECENT_WORK.TITLE' | translate}} {{'RECENT_WORK.TITLE' | translate}} {{'RECENT_WORK.TITLE' | translate}}</h2>
+  <h2 class="recent-work__title">{{ 'RECENT_WORK.TITLE' | translate }} {{ 'RECENT_WORK.TITLE' | translate }} {{ 'RECENT_WORK.TITLE' | translate }}</h2>
   <div class="recent-work__projects">
     @for (project of recentWork; track project.id) {
-      <div class="recent-work__project">
+      <div class="recent-work__project"
+           (mouseenter)="startCarousel(project)"
+           (mouseleave)="stopCarousel(project)">
         <div class="recent-work__image-wrapper">
-          <img class="recent-work__image" [src]="project.carouselImages[0].imgSrc" [alt]="project.title">
+          @for (image of project.carouselImages; track image.id) {
+            @if (isActiveImage(project, image.id)) {
+              <img [@fadeInOut]
+                   class="recent-work__image"
+                   [class.active]="isActiveImage(project, image.id)"
+                   [src]="image.imgSrc"
+                   [alt]="project.title[language()]">
+            }
+          }
         </div>
         <h3 class="recent-work__project-title">{{ project.title[language()] }}</h3>
       </div>

@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {HttpClient, provideHttpClient, withFetch} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -25,7 +26,8 @@ export const appConfig: ApplicationConfig = {
           useFactory: createTranslateLoader,
           deps: [HttpClient]
         }
-      })
+      }),
+      BrowserAnimationsModule
     )
   ]
 };

@@ -80,6 +80,21 @@
     display: block;
     margin: 0;
     min-width: 200px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    &.active {
+      opacity: 1;
+    }
+
+    &:first-child {
+      position: relative;
+    }
+
+    &:not(:first-child) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     @include breakpoint-up(lg) {
     min-width: 200px;
