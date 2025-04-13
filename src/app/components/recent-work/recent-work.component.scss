@@ -5,7 +5,9 @@
   padding: 75px 0;
   width: 100%;
   overflow: hidden;
-
+  @include breakpoint-up(lg) {
+    padding: 150px 0;
+  }
   &__title {
     white-space: nowrap;
     //overflow: hidden;

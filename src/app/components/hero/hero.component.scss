@@ -34,6 +34,7 @@ section.hero {
     margin-right: 30px;
     :host-context([dir="rtl"]) & {
       margin-left: 30px;
+      margin-right: 0;
     }
 
     &.hidden {
@@ -75,7 +76,9 @@ section.hero {
     letter-spacing: 0.52px;
     text-decoration: none;
     transition: opacity 0.3s ease;
-
+    :host-context([dir="rtl"]) & {
+      font-size: 25px;
+    }
     &:hover {
       opacity: 0.8;
     }
@@ -86,7 +89,10 @@ section.hero {
     align-items: center;
     margin-left: 40px;
     cursor: pointer;
-
+    :host-context([dir="rtl"]) & {
+      margin-left: 0;
+      margin-right: 40px;
+    }
     img {
       margin-right: 8px;
     }
@@ -256,7 +262,7 @@ section.hero {
 
     // Desktop-only typography
     @include breakpoint-up(lg) {
-      text-align: right;
+      //text-align: right;
       font-size: 46px;
       letter-spacing: 0.46px;
     }
@@ -276,7 +282,7 @@ section.hero {
       opacity: 0.8;
     }
     @include breakpoint-up(lg) {
-      padding-left: 43px;
+      //padding-left: 43px;
     }
   }
 

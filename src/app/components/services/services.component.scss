@@ -4,7 +4,9 @@
   background-color: white;
   color: black;
   padding: 90px 32px;
-
+  @include breakpoint-up(lg) {
+    padding: 150px 32px;
+  }
   &__container {
     max-width: 1400px;
     margin: 0 auto;
@@ -30,6 +32,10 @@
     @include breakpoint-up(lg) {
       margin-left: 100px;
       max-width: 1283px;
+      :host-context([dir="rtl"]) & {
+        margin-left: 0;
+        margin-right: 100px;
+      }
     }
   }
 
@@ -42,6 +48,9 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.32px;
+    @include breakpoint-up(lg) {
+      font-size: 46px;
+    }
   }
 
   &__cta {
@@ -95,13 +104,18 @@
     margin: 0;
     display: flex;
     align-items: center;
+    @include breakpoint-up(lg) {
+
+    }
   }
 
   &__bullet {
     display: inline-flex;
     align-items: center;
     margin-right: 25px;
-
+    :host-context([dir="rtl"]) & {
+      margin-right: 0;  margin-left: 25px;
+    }
     img {
       width: 16px;
       height: 16px;

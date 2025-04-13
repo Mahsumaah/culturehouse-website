@@ -5,7 +5,7 @@
   height: auto;
   padding: 90px 32px;
   @include breakpoint-up(lg) {
-    padding: 90px 110px;
+    padding: 150px 110px;
 
   }
 
@@ -37,6 +37,10 @@
       display: flex;
       justify-content: space-between;
       margin-left: 20%;
+      :host-context([dir="rtl"]) & {
+        margin-left: 0;
+        margin-right: 20%;
+      }
     }
   }
 
