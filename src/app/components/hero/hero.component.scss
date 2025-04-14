@@ -77,7 +77,7 @@ section.hero {
     text-decoration: none;
     transition: opacity 0.3s ease;
     :host-context([dir="rtl"]) & {
-      font-size: 25px;
+      font-size: 21px;
     }
     &:hover {
       opacity: 0.8;
@@ -104,6 +104,9 @@ section.hero {
       font-weight: 700;
       margin-right: 10px;
       cursor: pointer;
+      :host-context([dir="rtl"]) & {
+        font-size: 21px;
+      }
       &.active {
         color: #AFA75B;
       }
@@ -259,7 +262,9 @@ section.hero {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.32px;
-
+    :host-context([dir="rtl"]) & {
+      line-height: 70px;
+    }
     // Desktop-only typography
     @include breakpoint-up(lg) {
       //text-align: right;
@@ -313,6 +318,11 @@ section.hero {
 
   &__arrow {
     margin-left: 12px;
+   :host-context([dir="rtl"]) & {
+      margin-left: 0;
+      margin-right: 12px;
+     transform: rotate(180deg);
+    }
   }
 }
 
