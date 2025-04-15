@@ -57,10 +57,14 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+
+
     :host-context([dir="rtl"]) & {
       line-height: 45px;
       @include breakpoint-up(lg) {
-        line-height: 65px;
+        font-size: 38px;
+        line-height: 59px;
       }
     }
     @include breakpoint-up(lg) {

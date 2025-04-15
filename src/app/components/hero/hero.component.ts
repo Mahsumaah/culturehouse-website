@@ -24,7 +24,7 @@ export class HeroComponent implements OnInit {
     { id: 'work', url: '#work', label: 'NAVIGATION.RECENT_WORK' },
     { id: 'services', url: '#services', label: 'NAVIGATION.SERVICES' },
     { id: 'help', url: '#help', label: 'NAVIGATION.HELP' },
-    { id: 'contact', url: '#contact', label: 'NAVIGATION.CONTACT' }
+    { id: 'contact', url: '#connect', label: 'NAVIGATION.CONTACT' }
   ];
 
   // Available languages

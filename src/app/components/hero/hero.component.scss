@@ -62,7 +62,10 @@ section.hero {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 30px;
+    gap: 20px;
+    @include breakpoint-up(xl) {
+      gap: 30px;
+    }
   }
 
   &__menu-link {
@@ -71,13 +74,17 @@ section.hero {
     font-family: inherit;
     font-size: 23px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 134.2%; /* 34.892px */
     letter-spacing: 0.52px;
     text-decoration: none;
     transition: opacity 0.3s ease;
     :host-context([dir="rtl"]) & {
-      font-size: 21px;
+      font-size: 18px;
+      @include breakpoint-up(xl) {
+        font-weight: 700;
+        font-size: 21px;
+      }
     }
     &:hover {
       opacity: 0.8;
@@ -169,7 +176,7 @@ section.hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 32px;
+  //padding: 32px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -188,7 +195,8 @@ section.hero {
     flex-direction: column;
     max-width: 1400px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
+
   }
 
   &__item {
@@ -200,7 +208,7 @@ section.hero {
     font-weight: 700;
     line-height: 153%;
     text-decoration: none;
-    padding: 16px 0;
+    padding: 16px 32px;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -217,7 +225,7 @@ section.hero {
   }
 
   &__lang-switcher {
-    margin-top: 10px;
+    margin-top: 16px;
     display: flex;
     align-items: center;
 
@@ -225,6 +233,10 @@ section.hero {
       color: #FFF;
       font-family: inherit;
       margin-left: 8px;
+      :host-context([dir="rtl"]) & {
+        margin-right: 8px;
+        margin-left: 0;
+      }
       flex-direction: row;
     }
 
