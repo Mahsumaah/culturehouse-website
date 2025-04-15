@@ -11,7 +11,7 @@
       <div class="nav__desktop-menu">
         <ul class="nav__menu-items">
           @for (item of menuItems; track item.id) {
-            <li><a [href]="item.url" class="nav__menu-link">{{ item.label | translate }}</a></li>
+            <li class="nav__menu-item"><a [href]="item.url" class="nav__menu-link">{{ item.label | translate }}</a></li>
           }
         </ul>
         <div class="nav__lang-switcher">
