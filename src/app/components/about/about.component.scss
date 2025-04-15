@@ -52,14 +52,20 @@
     font-size: 32px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: 0.32px;
 
     &:last-child {
       margin-bottom: 0;
     }
+    :host-context([dir="rtl"]) & {
+      line-height: 45px;
+      @include breakpoint-up(lg) {
+        line-height: 65px;
+      }
+    }
     @include breakpoint-up(lg) {
       font-size: 46px;
+      line-height: 59px;
     }
   }
 }

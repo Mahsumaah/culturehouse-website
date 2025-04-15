@@ -110,13 +110,13 @@
   &__project-title {
     margin: 13px 0;
     color: #FFF;
-    font-family: "Bliss Pro", sans-serif;
+    font-family: inherit;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.48px;
     text-overflow: ellipsis;
-
+    line-height: 40px;
     @include breakpoint-up(lg) {
       font-size: 26px;
       margin: 20px 0 0 0;

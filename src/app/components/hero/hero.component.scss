@@ -69,7 +69,7 @@ section.hero {
     color: #FFF;
     text-align: center;
     font-family: inherit;
-    font-size: 26px;
+    font-size: 23px;
     font-style: normal;
     font-weight: 700;
     line-height: 134.2%; /* 34.892px */
@@ -100,13 +100,13 @@ section.hero {
     .nav__lang-label {
       color: #FFF;
       font-family: inherit;
-      font-size: 26px;
+      font-size: 16px;
       font-weight: 700;
       margin-right: 10px;
       cursor: pointer;
-      :host-context([dir="rtl"]) & {
-        font-size: 21px;
-      }
+      //:host-context([dir="rtl"]) & {
+      //  font-size: 13px;
+      //}
       &.active {
         color: #AFA75B;
       }
@@ -225,6 +225,18 @@ section.hero {
       color: #FFF;
       font-family: inherit;
       margin-left: 8px;
+      flex-direction: row;
+    }
+
+    .lang-selector {
+      display: flex;
+      gap: 10px;
+      span {
+        cursor: pointer;
+        &.active {
+          color: #AFA75B;
+        }
+      }
     }
   }
 }
