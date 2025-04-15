@@ -18,7 +18,7 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrl: './app.component.scss',
 })
 export class AppComponent  {
-  title = 'ng-culture-house';
+  title = 'Culture House';
 
   private languageService = inject(LanguageService);
   private translate = inject(TranslateService);
