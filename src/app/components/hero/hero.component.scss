@@ -89,7 +89,7 @@ section.hero {
     :host-context([dir="rtl"]) & {
       font-size: 18px;
       @include breakpoint-up(xl) {
-        font-weight: 700;
+        //font-weight: 700;
         font-size: 21px;
       }
     }
