@@ -49,11 +49,12 @@ export type RecentWork = RecentWorkItem[];
   styleUrl: './recent-work.component.scss',
   animations: [
     trigger('fadeInOut', [
-      state('void', style({
-        opacity: 0
-      })),
-      transition('void <=> *', [
-        animate('0.8s ease-in-out')
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('800ms ease-in-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('800ms ease-in-out', style({ opacity: 0 }))
       ])
     ])
   ]
@@ -67,6 +68,7 @@ export class RecentWorkComponent implements AfterViewInit{
   private languageService = inject(LanguageService);
   private ngZone = inject(NgZone);
   private carouselIntervals: Map<number, any> = new Map();
+  private isTouchDevice = false;
   language = toSignal(this.languageService.language$, { initialValue: 'en' });
 
 
@@ -74,7 +76,16 @@ export class RecentWorkComponent implements AfterViewInit{
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     // Check if we're in the browser
     this.isBrowser = isPlatformBrowser(platformId);
+    // Check if it's a touch device
+    if (this.isBrowser) {
+      this.isTouchDevice = 'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        (navigator as any).msMaxTouchPoints > 0;
+    }
   }
+
+
+
   recentWork: RecentWork = [
     {
       id: 2,
@@ -336,7 +347,14 @@ export class RecentWorkComponent implements AfterViewInit{
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    if (!this.isBrowser || !this.sectionVisible) return;
+    if(!this.isBrowser) {
+      return;
+    }
+    if (this.isTouchDevice) {
+      this.clearAllCarousels();
+    }
+
+    if (!this.sectionVisible) return;
 
     const scrollTop = window.scrollY;
     console.log('Scroll Top:', scrollTop);
@@ -344,6 +362,7 @@ export class RecentWorkComponent implements AfterViewInit{
     this.lastScrollTop = scrollTop;
     console.log('Scroll Direction:', scrollDirection);
     this.updateTitlePosition(scrollDirection);
+
   }
 
   updateTitlePosition(scrollDirection: string = 'down') {
