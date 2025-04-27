@@ -173,7 +173,7 @@ section.hero {
 
 // Fullscreen menu (only for mobile)
 .fullscreen-menu {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -183,7 +183,6 @@ section.hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  //padding: 32px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;

@@ -47,7 +47,7 @@ export class HeroComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
 
     // Prevent scrolling when menu is open
-    document.body.style.overflow = this.isMenuOpen ? 'hidden' : '';
+    // document.body.style.overflow = this.isMenuOpen ? 'hidden' : '';
   }
 
   closeMenu(): void {
