@@ -87,25 +87,47 @@ export class RecentWorkComponent implements AfterViewInit{
 
 
   recentWork: RecentWork = [
+    // {
+    //   id: 2,
+    //   title: {
+    //     en: 'Shop Beirut', ar: 'تسوق بيروت'
+    //   },
+    //   activeImageId: 1, // Track active image
+    //   imgSrc: 'assets/work/shop-beirut-culture-house/main-shop-beirut-culture-house.jpg',
+    //   carouselImages: [
+    //     {
+    //       id: 1,
+    //       imgSrc: 'assets/work/shop-beirut-culture-house/main-shop-beirut-culture-house.jpg'
+    //     },
+    //     {
+    //       id: 2,
+    //       imgSrc: 'assets/work/shop-beirut-culture-house/shop-beirut-1-culture-house.jpg'
+    //     },
+    //     {
+    //       id: 3,
+    //       imgSrc: 'assets/work/shop-beirut-culture-house/shop-beirut-2-culture-house.jpg'
+    //     }
+    //   ]
+    // },
     {
       id: 2,
       title: {
-        en: 'Shop Beirut', ar: 'تسوق بيروت'
+        en: 'Costumes of Saudi Arabia', ar: 'أزياء المملكة العربية السعودية'
       },
       activeImageId: 1, // Track active image
-      imgSrc: 'assets/work/shop-beirut-culture-house/main-shop-beirut-culture-house.jpg',
+      imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg',
       carouselImages: [
         {
           id: 1,
-          imgSrc: 'assets/work/shop-beirut-culture-house/main-shop-beirut-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg'
         },
         {
           id: 2,
-          imgSrc: 'assets/work/shop-beirut-culture-house/shop-beirut-1-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-2-culture-house.jpg'
         },
         {
           id: 3,
-          imgSrc: 'assets/work/shop-beirut-culture-house/shop-beirut-2-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/main-costumes-of-saudi-arabia-culture-house.jpg'
         }
       ]
     },
