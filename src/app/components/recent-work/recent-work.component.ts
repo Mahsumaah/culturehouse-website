@@ -112,7 +112,7 @@ export class RecentWorkComponent implements AfterViewInit{
     {
       id: 2,
       title: {
-        en: 'Costumes of Saudi Arabia', ar: 'أزياء المملكة العربية السعودية'
+        en: 'Costumes of Saudi Arabia', ar: 'Costumes of Saudi Arabia'
       },
       activeImageId: 1, // Track active image
       imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg',
