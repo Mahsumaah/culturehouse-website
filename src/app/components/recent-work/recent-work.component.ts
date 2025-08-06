@@ -115,19 +115,19 @@ export class RecentWorkComponent implements AfterViewInit{
         en: 'Costumes of Saudi Arabia', ar: 'Costumes of Saudi Arabia'
       },
       activeImageId: 1, // Track active image
-      imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg',
+      imgSrc: 'assets/work/costume-saudi/main-costumes-of-saudi-arabia-culture-house.jpg',
       carouselImages: [
         {
           id: 1,
-          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/main-costumes-of-saudi-arabia-culture-house.jpg'
         },
         {
           id: 2,
-          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-2-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-1-culture-house.jpg'
         },
         {
           id: 3,
-          imgSrc: 'assets/work/costume-saudi/main-costumes-of-saudi-arabia-culture-house.jpg'
+          imgSrc: 'assets/work/costume-saudi/costumes-of-saudi-arabia-2-culture-house.jpg'
         }
       ]
     },
